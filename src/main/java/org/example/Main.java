@@ -15,6 +15,7 @@ public class Main {
                 {apple_tree.symbol, '0', apple_tree.symbol}
         };
 
+        int test
 
         int how_many_trees = 0;
         for (int i = 0; i <3; i++) {
