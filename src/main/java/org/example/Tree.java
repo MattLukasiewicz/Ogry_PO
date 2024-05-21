@@ -8,6 +8,11 @@ public class Tree {
     int heigh_of_the_fruits;
     int points;
 
+    int maxPoints()
+    {
+        return quantity_of_fruit*points;
+    }
+
     public Tree(String name,char symbol,int quantity_of_fruit,int heigh_of_the_fruits,int points){
         this.name=name;
         this.symbol=symbol;
