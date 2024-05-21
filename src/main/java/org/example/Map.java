@@ -50,9 +50,15 @@ class Map {
         Harvester Hero1 = new Shrek("Shrek", '%', 280, 1.0);
         System.out.println("Name: " + Hero1.name + " Height: " + Hero1.height + " Accuracy: " + Hero1.harvesting_accuracy+ " Points: "+ Hero1.points);
 
-        //Creating a trees
+        //Creating trees
+        Tree[] trees = new Tree[2];
+
+
         Tree apple_tree = new Tree("apple_tree", 'J', 5, 240, 5);
         Tree banana_tree = new Tree("banana_tree", 'B', 10, 330, 1);
+
+        trees[0] = apple_tree;
+        trees[1] = banana_tree;
 
         //Counting some data
         int how_many_apple_trees = 0;
@@ -61,31 +67,26 @@ class Map {
         //Moving and Harvesting
         for (int i = 0; i <5; i++) {
             for (int j = 0; j <5; j++) {
+                if (mapArray[i][j] == apple_tree.symbol) how_many_apple_trees++;
+                if (mapArray[i][j] == banana_tree.symbol) how_many_banana_trees++;
+                if(mapArray[i][j]!='0'){
+                    for(Tree tree : trees){
+                        if (mapArray[i][j] == tree.symbol) {
+                            int heightDiference =abs(Hero1.height-tree.heigh_of_the_fruits);
+                            if(heightDiference<=40){
+                                Hero1.points+= tree.maxPoints();
 
-                if (mapArray[i][j] == apple_tree.symbol){
-                    how_many_apple_trees++;
-                    int heightDiference =abs(Hero1.height-apple_tree.heigh_of_the_fruits);
-                    if(heightDiference<=40){
-                        Hero1.points+= apple_tree.maxPoints();
+                            }if(heightDiference>40){
+                                Hero1.points+= tree.maxPoints()* heightDiference*0.01;
 
-                    }if(heightDiference>40){
-                        Hero1.points+= apple_tree.maxPoints()* heightDiference*0.01;
+                            }
 
+
+                        }
                     }
+
                 }
 
-
-                if (mapArray[i][j] == banana_tree.symbol){
-                    how_many_banana_trees++;
-                    int heightDiference =abs(Hero1.height-banana_tree.heigh_of_the_fruits);
-                    if(heightDiference<=40){
-                        Hero1.points+= banana_tree.maxPoints();
-
-                    }if(heightDiference>40){
-                        Hero1.points+= banana_tree.maxPoints()* heightDiference*0.01;
-
-                    }
-                }
 
 
 
